@@ -1,6 +1,3 @@
----
-share: "true"
----
 ## LLM
 A powerful type of AI (specifically, a deep learning neural network, often based on the "Transformer" architecture) trained on **massive amounts of text and code data**.
 

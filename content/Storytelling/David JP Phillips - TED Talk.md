@@ -1,16 +1,16 @@
-## David JP Phillips
-- The more emotional invested you are, the less critical you become
-- "The Angel's Cocktail", increasing the hormones:
+## "The Angel's Cocktail"
+The more emotional invested you are, the less critical you become. The goal is to increase the hormones:
 	- **Dopamine**: increases focus, motivation and memory;
 		- Create suspense, cliffhangers 
 	- **Oxytocin**: increases generosity, trust and bonding 
 		- People feel "more human"
 	- **Endorphin**: more creative, focused 
+
 1) Everyone is a good storyteller from birth, but people don't believe in themselves
 2) You have more stories in your life that you think you do
 3) Which stories make people laugh? Which ones make them feel empathy? 
 
-# Structure
+# Storytelling Structure
 ## Hook
 - Grab their attention with something relatable or a surprising insight
 - Pose an intriguing question that will be answered through the demo

@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 Hi, my name is Gustavo and today we're doing a demonstration of GraphXR’s Natural Language Interface, or NLI. Here I'm going to explore commands that can help us navigate, manipulate, and analyze a graph.
 
 Let's start by creating some nodes: 
