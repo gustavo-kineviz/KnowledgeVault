@@ -1,4 +1,6 @@
+![[Pasted image 20250715190758.png]]
 [Link to the video](https://www.youtube.com/watch?v=LCEmiRjPEtQ)
+
 # Part 1 - Summary
 - Software 1.0: Human programmers writing explicit, line-by-line code. Everything is written and crafted manually;
 - Software 2.0: Machine learning models, in which the "code" is the learned parameters (weights) of the neural network;
@@ -31,6 +33,7 @@ Just like you can run VS Code in different operational systems, you can run an L
 ## The new LLM OS and historical computing analogies
 
 Just like when computers were too expensive, we're all using LLMs that are running in the cloud and streamed back and forth over the network.
+
 ![[Pasted image 20250623213814.png]]
 
 - Does chat GPT need a [[Glossary#GUI|GUI]] ?
