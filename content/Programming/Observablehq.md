@@ -1,3 +1,6 @@
+---
+draft: true
+---
 https://observablehq.com/@observablehq/observable-overview-video
 
 https://observablehq.com/@observablehq/learning-observable-introduction?collection=@observablehq/intro-to-observable

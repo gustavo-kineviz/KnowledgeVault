@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 API link: https://graphxr.dev/graphxr-api/selection
 
 - Each view is a document, so save them often not to lose progress

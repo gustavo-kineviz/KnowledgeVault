@@ -1,3 +1,6 @@
+---
+draft: true
+---
 - SeekerXR: Informações sobre pessoas, organizações e identidades em geral. É integrado com o graphXR. 
 	- A API Seeker (inteface) não é da Kineviz
 
