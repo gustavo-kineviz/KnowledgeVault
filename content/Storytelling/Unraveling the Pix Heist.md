@@ -1,0 +1,3 @@
+**Target Audience:** Financial Crime Investigators, Fraud Analysts, Cybersecurity Teams, and Compliance Officers at Financial Institutions.
+
+**Pain Point:** The overwhelming complexity and sheer volume of data in large-scale financial fraud cases make it incredibly difficult to identify all illicit transactions, trace funds through multiple layers, and uncover the full network of perpetrators and beneficiaries in a timely manner. Traditional methods often fail to provide a holistic view, leading to incomplete investigations and significant financial losses.
