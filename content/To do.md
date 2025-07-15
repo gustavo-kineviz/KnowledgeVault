@@ -1,1 +1,4 @@
+- [ ] Publish Obsidian Notes
+- [x] Correct ego API
+- [ ] Correct error message on chat integration
 - [x] Correct ego API reference
