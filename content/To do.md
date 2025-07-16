@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 - [ ] Publish Obsidian Notes
 - [x] Correct ego API
 - [ ] Correct error message on chat integration
