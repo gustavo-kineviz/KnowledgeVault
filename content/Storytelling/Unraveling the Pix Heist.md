@@ -40,16 +40,4 @@ No more flipping between spreadsheets and reports."*
 
 5. Stakeholder Storytelling 
 
-*"This is how you present a R$541 million crime to stakeholders without drowning them in data:
-Start with the big picture
-(Zoom out to show BMP Bank + attack node)
-"A supply chain attack via their tech provider—not just ‘another hack’."
-Highlight critical connections
-(Pulse João Nazareno’s node and his R$15,000 payment link)
-"The insider. The money trail. The front company. All visually obvious."
-Show actionability
-(Highlight frozen accounts and police investigation links)
-"R$270 million recovered here. These suspects still at large."
-Hide complexity until needed
-*(Toggle layers to reveal second-layer R$522M only when clicked)*
-"Details appear on demand—no overload upfront."
+(on progress)
