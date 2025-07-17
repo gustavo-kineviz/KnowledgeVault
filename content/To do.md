@@ -2,7 +2,6 @@
 draft: true
 ---
 
-- [ ] Publish Obsidian Notes
-- [x] Correct ego API
+- [x] Publish Obsidian Notes
 - [ ] Correct error message on chat integration
 - [x] Correct ego API reference
