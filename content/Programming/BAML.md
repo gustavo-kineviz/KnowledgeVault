@@ -1,6 +1,7 @@
+![[Pasted image 20250721121213.png]]
 [Documentation](https://github.com/BoundaryML/baml/blob/canary/README.md)
 
-BAML is a new programming language for building AI applications. You only need to write the AI parts with it, the rest of the code can be written in another language
+BAML (Basically a Made-up Language) is a new programming language for building AI applications. You only need to write the AI parts with it, the rest of the code can be written in another language
 ![[Pasted image 20250221174317.png]]
 
 ## BAML's Design Philosophy
@@ -21,6 +22,7 @@ BAML is a new programming language for building AI applications. You only need t
 	- Works even without native tool-calling APIs.
 - **Integration with Existing Tools**
 	- BAML works even when the models don't support native tool-calling APIs. by using SAP algorithm to support the flexible outputs LLMs can provide, like markdown within a JSON blob or chain-of-thought prior to answering
+	- ![[Pasted image 20250721121047.png]]
 - **Iteration speed**
 	- Edit prompts like code—no string juggling or client rebuilds.
 
