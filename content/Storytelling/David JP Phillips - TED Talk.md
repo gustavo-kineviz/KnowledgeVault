@@ -1,8 +1,7 @@
-![[Pasted image 20250721122040.png]]
-[Click here to watch the full video](https://www.youtube.com/watch?v=Nj-hdQMa3uA)
-
 What if you could craft stories that don’t just inform—but _enthrall_? Stories that pull people in, make them lean forward, and leave them forever changed? The secret lies in **"The Angel’s Cocktail"**—a powerful blend of brain chemistry and narrative technique. The more emotionally invested your audience becomes, the less critical they are, allowing your message to resonate deeply.
 
+![[Pasted image 20250721122040.png]]
+[Click here to watch the full video](https://www.youtube.com/watch?v=Nj-hdQMa3uA)
 ## "The Angel's Cocktail"
 The goal is to increase the hormones:
 	- **Dopamine**: increases focus, motivation and memory;
