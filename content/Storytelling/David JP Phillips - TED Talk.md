@@ -1,9 +1,10 @@
-What if you could craft stories that don’t just inform—but _enthrall_? Stories that pull people in, make them lean forward, and leave them forever changed?
+![[Pasted image 20250721122040.png]]
+[Click here to watch the full video](https://www.youtube.com/watch?v=Nj-hdQMa3uA)
 
-The secret lies in **"The Angel’s Cocktail"**—a powerful blend of brain chemistry and narrative technique. The more emotionally invested your audience becomes, the less critical they are, allowing your message to resonate deeply. By strategically triggering key hormones—**dopamine** (focus & motivation), **oxytocin** (trust & bonding), and **endorphins** (creativity & joy)—you can transform any presentation, pitch, or data demo into an unforgettable experience.
+What if you could craft stories that don’t just inform—but _enthrall_? Stories that pull people in, make them lean forward, and leave them forever changed? The secret lies in **"The Angel’s Cocktail"**—a powerful blend of brain chemistry and narrative technique. The more emotionally invested your audience becomes, the less critical they are, allowing your message to resonate deeply.
+
 ## "The Angel's Cocktail"
-The more emotional invested you are, the less critical you become. The goal is to increase the hormones:
-![[Pasted image 20250721121729.png]]
+The goal is to increase the hormones:
 	- **Dopamine**: increases focus, motivation and memory;
 		- Create suspense, cliffhangers 
 	- **Oxytocin**: increases generosity, trust and bonding 
