@@ -1,6 +1,7 @@
 ---
 draft: true
 ---
+<<<<<<< HEAD
 
 Token was stored in plain text
 It was only using github api instead of git itself and corrupting files
@@ -12,3 +13,5 @@ It's not currently sustainable
 Contador do Diénert para me orientar a abrir a empresa
 Ele paga um endereço virtual (caixa postal)
 
+=======
+>>>>>>> 692e24d (Quartz sync: Aug 7, 2025, 6:06 PM)
