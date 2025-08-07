@@ -4,7 +4,7 @@
 # Part 1 - Summary
 - Software 1.0: Human programmers writing explicit, line-by-line code. Everything is written and crafted manually;
 - Software 2.0: Machine learning models, in which the "code" is the learned parameters (weights) of the neural network;
-- Software 3.0: Your prompts are now programs written in Large Language Models (LLMs). "The hottest new programming language is English"
+- Software 3.0: Your prompts are now programs written in Large Language Models ([[Glossary#**LLM**|LLMs]]) "The hottest new programming language is English"
 
 ![[Screenshot 2025-06-23 at 8.35.08 PM.png]]
 
@@ -58,8 +58,9 @@ Example: Make an app for a teacher that creates courses, and other one for stude
 
 - The Iron Man Suit is both an augmentation, that Tony Stark can drive, and it's also an agent that is autonomous. We need more Iron Man suits, and less Iron Man robots.
 
-"Vibe coding": Everyone is now a programmer. The code is actually the easy part!
+**Vibe coding**: Everyone is now a programmer. The code is actually the easy part!
+	More about this on [[Vibe Coding 101]]
 
-Just like humans with GUIs, and computers with APIs, now we have a new thing: agents are computers, but they are humanlike. You can add [[Glossary#Markdown|markdowns]] to communicate directly with the LLM, since it's easy for it to understand.
+Just like humans with GUIs, and computers with APIs, now we have a new thing: agents are computers, but they are humanlike. You can add [[Glossary#**Markdown**|markdowns]] to communicate directly with the LLM, since it's easy for it to understand.
 
 If we can make docs legible to LLMs it's gonna unlock a huge amount of use. But it's not just make it a markdown, you have to adapt things like "click" to an equivalent that an LLM could take on your behalf.
