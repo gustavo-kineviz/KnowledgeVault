@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "gustavo-kineviz.github.io/KnowledgeVault",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", ".copilot-custom-prompts"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
