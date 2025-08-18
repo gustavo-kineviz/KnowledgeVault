@@ -7,7 +7,7 @@ That’s **vibe coding** — a term coined by [Andrej Karpathy](https://karpathy
 
 This was when the term got popular:
 
-![[Pasted image 20250813191817.png]]
+![[Pasted image 20250813191817.png|400]]
 
 ---
 
