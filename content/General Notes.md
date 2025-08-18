@@ -24,3 +24,8 @@ Use more API instead of functions cause you can use AI in it
 Wei wants to promote GraphXR as Business Intelligence 
 
 Don't include keys directly into code
+
+
+My idea is to create a comfortable environment to learn. Coding is intimidating
+People can also get used to the graph view, which is being slowly populated 
+The idea now is to get more GraphXR specific

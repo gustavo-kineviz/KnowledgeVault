@@ -25,7 +25,7 @@ If you're planning what needs to be built and making decisions — you’re prog
 
 ---
 
-## Which AIs to Use?
+# Which AIs to Use?
 
 You might wonder: **Should I just use ChatGPT for everything?**  
 Not really. Different tools are better for different tasks:
@@ -43,7 +43,7 @@ Use the right tool for the job — you don’t hammer nails with a screwdriver.
 
 ---
 
-## 🛑 Use Git — Always
+# 🛑 Use Git — Always
 
 LLMs are powerful — but they can mess things up.
 
@@ -51,7 +51,7 @@ If you're relying on AI to change or generate code, **use Git** to track version
 
 > Learn more here: [[Git - A Quick Guide]]
 
-## ⚠️ Common Pitfalls of Vibe Coding
+# ⚠️ Common Pitfalls of Vibe Coding
 
 Vibe coding feels magical — but it has risks:
 

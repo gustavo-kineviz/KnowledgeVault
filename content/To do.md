@@ -1,10 +1,12 @@
 ---
 draft: true
 ---
-- [ ] Fix and update obsidian
+- [x] Fix and update obsidian
 	- [x] Update [[BAML]]
 	- [x] Update drafts
 	- [x] Update [[index]]
-	- [ ] host on github
+	- [x] host on github
 - [ ] Ask wei about (errors: 4/5) and force recconect on pdf to knowledge
-- [ ] [[Vibe Coding 101]]
+- [x] [[Vibe Coding 101]]
+- [ ] ![[CleanShot 2025-08-18 at 11.16.31.png]]
+- [ ] What is spanner graph?
