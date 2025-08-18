@@ -1,3 +1,4 @@
+# What is Vibe Coding?
 **Imagine building an app without really “coding.”**
 
 No cryptic symbols, no walls of text — just **talking, clicking, and copy-pasting**… and it works.  
@@ -10,7 +11,7 @@ This was when the term got popular:
 
 ---
 
-## Coding vs Programming
+# Coding vs Programming
 
 People often confuse these terms, but they’re not the same:
 
