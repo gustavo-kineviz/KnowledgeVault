@@ -23,9 +23,11 @@ _put the [[Grove - Vibe Coding Script#Claude Input]] into claude_
 Looks like the button it gave me does not have the proper syntax, but no problem! Let's just give it a functional button as an example and try again.
 _put the [[Useful Grove Buttons for General Applications]] (WIP) examples_
 
-And there you have it. In just a few simple steps, we've transformed that disorganized data into a rich, interactive graph. No complex coding, just plain English and a little help from AI. That’s the power of **vibe coding + Grove + GraphXR**—making your data come alive, fast.
+And there you have it. In just a few simple steps, we’ve transformed messy data into a rich, interactive graph. No complex coding — just plain English and a little help from AI. That’s the power of **vibe coding + Grove + GraphXR**: making your data come alive, fast.
 
-That's just the surface of you can do with Grove (_quick showcase of more complex cases_). If you want to chat about it, ask questions and discuss about tech news in general, join our [Discord](https://discord.gg/w96TPbgZKe)! Link in the description.
+And this is only the beginning. Grove can handle much more — from building complex relationships to automating entire workflows.
+
+If you want to see what else is possible, or just hang out and talk tech, join our [Discord](https://discord.gg/w96TPbgZKe)
 
 
 --- 
