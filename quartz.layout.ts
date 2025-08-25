@@ -9,6 +9,9 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       "Kineviz Discord": "https://discord.gg/w96TPbgZKe",
+      "Kineviz LinkedIn": "https://www.linkedin.com/company/kineviz-inc/",
+      "Gustavo's LinkedIn": "https://www.linkedin.com/in/gustavo-lps/",
+      "Kineviz YouTube": "https://www.youtube.com/@Kineviz"
     },
   }),
 }
