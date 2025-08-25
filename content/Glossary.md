@@ -14,12 +14,24 @@ A small computer program designed to perform a specific task.
 
 ---
 
+## Call to Action (CTA)
+
+A clear directive that tells the audience what specific step to take next, typically placed at the end of presentations or content.
+
+---
+
 ## CamelCase
 
 A way of writing names where each word starts with a capital letter and no spaces are used.  
 Common in JavaScript because spaces aren't allowed in variable names.
 
 ![[Pasted image 20250603113551.png]]
+
+---
+
+## Cliffhanger
+
+A narrative technique that builds suspense by creating an unresolved situation, making the audience eager to know what happens next. Triggers dopamine release.
 
 ---
 
@@ -38,6 +50,12 @@ A container for files and other directories on your computer. In programming, un
 ## GUI
 
 Short for **Graphical User Interface** — a way to interact with software through icons, buttons, and visuals, instead of typing commands.
+
+---
+
+## Hook
+
+The opening element of a story designed to immediately grab audience attention and create engagement. Often uses surprise, relatability, or intriguing questions.
 
 ---
 

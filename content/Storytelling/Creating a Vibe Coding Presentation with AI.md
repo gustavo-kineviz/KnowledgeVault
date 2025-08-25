@@ -1,5 +1,7 @@
 _A real-world case study in human-AI collaboration_
 
+<iframe src="https://gustavo-kineviz.github.io/KnowledgeVault/vibe-coding-presentation.html" width="100%" height="600px" style="border: 2px solid #4facfe; border-radius: 12px;"> </iframe>
+
 ---
 
 ## 📋 The Challenge
