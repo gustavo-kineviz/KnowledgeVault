@@ -6,9 +6,9 @@ echo "📋 Copying your notes..."
 cp -r ~/Desktop/Kineviz_Obsidian/* content/
 
 echo "🗑️ Removing unwanted files..."
-rm -rf content/.obsidian content/.git content/.trash content/copilot-custom-prompts
+rm -rf content/.obsidian content/.git content/.trash content/drafts
 
 echo "🚀 Publishing to website..."
 npx quartz sync
 
-echo "✅ Done! Your website is updated."
+echo "✅ Done! Website updated."

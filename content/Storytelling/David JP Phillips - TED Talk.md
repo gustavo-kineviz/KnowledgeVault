@@ -1,7 +1,4 @@
----
-draft: true
----
-## David JP Phillips
+# Emotional Investment
 - The more emotional invested you are, the less critical you become
 - "The Angel's Cocktail", increasing the hormones:
 	- **Dopamine**: increases focus, motivation and memory;
