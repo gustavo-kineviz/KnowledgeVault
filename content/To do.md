@@ -4,7 +4,7 @@ draft: true
 # Pending
 - [ ] ![[CleanShot 2025-08-18 at 11.16.31.png]]
 - [ ] What is spanner/puppy graph?
-- [ ] Grove video / Vibe coding global huddle
+- [x] Grove video / Vibe coding global huddle
 - [ ] Help Ben with 3.0
 - [ ] One Password
 	- [ ] Get a team setup
