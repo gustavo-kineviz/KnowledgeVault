@@ -22,3 +22,5 @@ draft: true
 - [x] Ask wei about (errors: 4/5) and force recconect on pdf to knowledge
 - [x] [[Vibe Coding 101]]
 - [x] Responder sony
+
+Learned how to use iframes

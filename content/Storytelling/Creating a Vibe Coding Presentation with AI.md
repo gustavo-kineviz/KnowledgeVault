@@ -1,6 +1,6 @@
 _A real-world case study in human-AI collaboration_
 
-# [Link to the presentation](vibe-coding-presentation.html)
+<iframe src="file:///Users/weidongyang/Desktop/quartz/content/Storytelling/vibe-coding-presentation.html" width="100%" height="700" frameborder="0"></iframe>
 
 ---
 
