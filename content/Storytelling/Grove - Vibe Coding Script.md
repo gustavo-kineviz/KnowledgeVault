@@ -24,7 +24,7 @@ And there you have it. In just a few simple steps, we’ve transformed messy dat
 
 And this is only the beginning. Grove can handle much more — from building complex relationships to automating entire workflows.
 
-If you want to see what else is possible, or just hang out and talk tech, join our [Discord](https://discord.gg/w96TPbgZKe)
+If you want to see what else is possible, or just hang out and talk about data visualization and technology news, join our [Discord](https://discord.gg/w96TPbgZKe). The link will the in the description.
 
 
 --- 
