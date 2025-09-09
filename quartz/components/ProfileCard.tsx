@@ -44,12 +44,6 @@ ProfileCard.css = `
   font-weight: 600;
 }
 
-.profile-description {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--gray);
-  line-height: 1.3;
-}
 `
 
 export default (() => ProfileCard) satisfies QuartzComponentConstructor
