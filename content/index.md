@@ -15,9 +15,7 @@ At its core, this space is about making learning **accessible, collaborative, an
 
 # Who am I?
 
-Hi! I’m Gustavo — a 25-year-old Production Engineer from Brazil.  
-
-![[Pasted image 20250813204000.png | 200]]
+Hi! I’m Gustavo — 
 
 I started this **Knowledge Vault** because I believe that ideas grow stronger when shared. Every time I explain something to someone else, I notice gaps in my own understanding — and that’s where the real learning happens.
 
