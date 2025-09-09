@@ -6,7 +6,7 @@ const ProfileCard: QuartzComponent = ({ displayClass }: QuartzComponentProps) =>
     <div class={classNames(displayClass, "profile-card")}>
       <div class="profile-content">
         <img 
-          src="/assets/profile.png" 
+          src="https://github.com/gustavo-kineviz/KnowledgeVault/raw/v4/content/assets/Pasted%20image%2020250813204000.png" 
           alt="Gustavo" 
           class="profile-image"
         />
