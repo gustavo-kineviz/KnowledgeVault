@@ -23,6 +23,7 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
+import ProfileCard from "./ProfileCard"
 
 export {
   ArticleTitle,
@@ -33,6 +34,7 @@ export {
   ReaderMode,
   Head,
   PageTitle,
+  ProfileCard,
   ContentMeta,
   Spacer,
   TableOfContents,
