@@ -1,3 +1,4 @@
+This is a collection of important terms and concepts with clear definitions for quick reference and review.
 ## Anterograde Amnesia
 
 In medicine: the **inability to form new memories** after a certain event or condition.

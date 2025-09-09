@@ -12,6 +12,7 @@ draft: true
 	- [ ] Como organizar posts e conseguir engajamento
 	- [ ] Entender como engajar no Linkedin
 	- [ ] Instagram more artsy
+- [ ] Presentation about dataview
 
 --- 
 # Done
