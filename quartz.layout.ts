@@ -8,9 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
+      "Gustavo's LinkedIn": "https://www.linkedin.com/in/gustavo-lps/",
       "Kineviz Discord": "https://discord.gg/w96TPbgZKe",
       "Kineviz LinkedIn": "https://www.linkedin.com/company/kineviz-inc/",
-      "Gustavo's LinkedIn": "https://www.linkedin.com/in/gustavo-lps/",
       "Kineviz YouTube": "https://www.youtube.com/@Kineviz"
     },
   }),
@@ -35,8 +35,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer(),
   ],
   right: [
-    //Component.Graph(),
-    Component.ProfileCard(),
+    Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
