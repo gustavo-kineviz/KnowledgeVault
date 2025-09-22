@@ -108,3 +108,7 @@ A style where spaces are replaced with underscores (`_`) and all letters are low
 A tool that tracks and manages changes to files over time.  
 Enables collaboration, rollback to previous versions, and conflict resolution.  
 Examples: **Git, Subversion (SVN), Mercurial**.
+
+
+
+[[General Notes]]

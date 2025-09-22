@@ -2,17 +2,15 @@
 draft: true
 ---
 # Pending
-- [ ] ![[CleanShot 2025-08-18 at 11.16.31.png]]
-- [ ] One Password
-	- [ ] Get a team setup
+- [ ] Obsidian guide
+- [ ] Help Sony with a video
+	- [ ] Talk with jacob about Graph Composer
+- [ ] One Password - team setup
 - [ ] Traduzir o primeiro tópico: [https://observablehq.com/collection/@dienert/d3](https://observablehq.com/collection/@dienert/d3)
 	- [ ] Criar uma conta no observable e criar um fork
-- [ ] Investigate who those people are: https://lightbridge.co/
-- [ ] What is expected from me related to social media? Be proactive - what are our goals? What to focus on?
-	- [ ] Como organizar posts e conseguir engajamento
-	- [ ] Entender como engajar no Linkedin
-	- [ ] Instagram more artsy
-- [ ] Presentation about dataview
+- [ ] GraphXR testing
+- [ ] We need to research [https://lovable.dev/?via=promo80&via=promo80&gad_source=1](https://lovable.dev/?via=promo80&via=promo80&gad_source=1), and build our own version of it, to generate on demand app inside GraphXR. [@Xing Li](https://kineviz.slack.com/team/U01FN5RNH40) [@Diénert](https://kineviz.slack.com/team/U04KJJQUDGT) [@Gustavo Lopes](https://kineviz.slack.com/team/U08CVTHC9AS) can you guys take a look at it? Possible to use Grove. This is not a 3.x feature. But we should target this as soon as we get 3.x to a good place.
+
 
 --- 
 # Done
@@ -26,3 +24,4 @@ draft: true
 - [x] Responder sony
 - [x] Learned how to use iframes
 - [x] Grove video / Vibe coding global huddle
+- [x] Presentation about dataview ✅ 2025-09-16

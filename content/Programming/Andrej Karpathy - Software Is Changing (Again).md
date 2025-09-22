@@ -1,3 +1,5 @@
+
+
 [Link to the video](https://www.youtube.com/watch?v=LCEmiRjPEtQ)
 # Part 1 – Summary
 
