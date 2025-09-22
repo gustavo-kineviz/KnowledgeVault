@@ -18,12 +18,6 @@
 
 ### **Opening Hook**
 
-**Action:** Show your Knowledge Vault with iframe embedded
-
-**Script:** _"Good [morning/afternoon] everyone! What you're seeing here is my Knowledge Vault - a connected network of insights spanning AI, programming, productivity, and creative thinking. The presentation slides you're about to see? Built entirely in Obsidian, just like this vault."_
-
-**Show:** Run through the 5-slide iframe presentation completely
-
 ### **Learning Objectives & Expectations**
 
 **Action:** Check off first item on checklist after iframe finishes
@@ -71,7 +65,7 @@ _For data experts like yourselves, think of it as turning your scattered insight
 `Python`, `R`, and `SQL` are our main tools.
 ```
 
-**Script:** _"Markdown is just plain text with simple formatting rules. # for headings, ** for bold, * for italic. It's readable as-is and renders beautifully. Since you work with code, you'll appreciate that it's version-controllable and future-proof."_
+**Script:** _"Markdown is just plain text with simple formatting rules. # for headings, ** for bold, * for italic. It's readable as-is and renders beautifully. Since you work with code, you'll appreciate that it's version-controllable and future-proof. Also, it's easy to vibe code with it"_
 
 ---
 
