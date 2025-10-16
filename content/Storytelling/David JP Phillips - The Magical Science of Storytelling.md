@@ -1,4 +1,12 @@
-
+---
+title: The Magical Science of Storytelling - David JP Phillips
+created: 2025-10-15
+category: Communication
+related:
+  - Presentations
+  - Public Speaking
+  - Creating a Vibe Coding Presentation with AI
+---
 _Based on "The magical science of storytelling" TED Talk_
 
 ---
@@ -156,3 +164,6 @@ Create neurochemical engagement by triggering three key hormones:
 - **Science supports art** - understanding the neurochemistry makes you more effective
 
 _Remember: The goal isn't just to inform, but to transform your audience through the power of story._
+
+---
+**tags** #storytelling #presentations #communication #neuroscience #dopamine #oxytocin #endorphin #public-speaking #narrative

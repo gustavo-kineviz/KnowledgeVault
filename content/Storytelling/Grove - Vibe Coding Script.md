@@ -1,3 +1,12 @@
+---
+title: Grove Vibe Coding Demo Script
+created: 2025-10-15
+category: Projects
+related:
+  - Vibe Coding 101
+  - GraphXR
+  - Creating a Vibe Coding Presentation with AI
+---
 # Guideline
 a. **My audience is** beginner-to-intermediate data analysts or developers who want to visualize data in GraphXR without deep coding experience. They are _Data Visualization Enthusiasts_, working at _Kineviz_ or organizations exploring graph analytics.
 
@@ -55,3 +64,7 @@ Please create a button that adds URL properties to these entities:
 - Medusa: https://www.pockettactics.com/wp-content/sites/pockettactics/2022/06/hades-characters-dusa.jpg
 - Minotaur: https://www.pockettactics.com/wp-content/sites/pockettactics/2022/06/hades-characters-asterius.jpg
 - Cerberus: https://www.pockettactics.com/wp-content/sites/pockettactics/2022/06/hades-characters-cerberus.jpg
+
+---
+
+**tags** #Grove #vibe-coding #GraphXR #Kineviz #demo #presentation-script #data-visualization #API #work

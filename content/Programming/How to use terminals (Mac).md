@@ -1,3 +1,12 @@
+---
+title: How to Use Terminal (Mac)
+created: 2025-10-15
+category: Technology
+related:
+  - Command Line
+  - Development Tools
+  - Git
+---
 # What is Terminal?
 
 Terminal is a [[Glossary#Command Line Interface (CLI)|command-line interface]] on Mac that lets you control your computer using text commands.  
@@ -175,3 +184,6 @@ cd ~
 💡 _Tip:_ Start by exploring your home directory with `ls` and `cd`. Practice navigating to Desktop, Documents, and Downloads to get comfortable with movement before trying more advanced commands.
 
 ⚠️ _Warning:_ Be careful with `rm` and `rm -rf` commands - they permanently delete files!
+
+---
+**tags** #terminal #command-line #mac #development #CLI #bash

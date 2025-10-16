@@ -1,3 +1,12 @@
+---
+title: Git - A Quick Guide
+created: 2025-07-06
+category: Technology
+related:
+  - Development Tools
+  - Version Control
+  - Terminal
+---
 # What is Git?
 Git is the most widely used [version control system](#version-control-system) in the world.  
 It **tracks changes**, **enables collaboration**, and **manages project history**.
@@ -113,7 +122,9 @@ git remote add origin <repository-url>
 git push -u origin main
 ```
 
----
-
 💡 _Tip:_ If you’re just starting, practice by making a small text file and tracking it with Git.  
 This helps you understand the staging → commit → push flow.
+
+---
+
+**tags** #git #version-control #development #tools #terminal #collaboration

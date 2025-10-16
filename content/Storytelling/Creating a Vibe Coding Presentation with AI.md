@@ -1,3 +1,13 @@
+---
+title: Creating a Vibe Coding Presentation with AI
+created: 2025-10-15
+category: Projects
+related:
+  - Vibe Coding 101
+  - Andrej Karpathy - Software Is Changing (Again)
+  - Grove - Vibe Coding Script
+  - David JP Phillips - The Magical Science of Storytelling
+---
 _A real-world case study in human-AI collaboration_
 
 <iframe src="https://gustavo-kineviz.github.io/static-files/vibe-coding-presentation.html" width="100%" height="700" frameborder="0"></iframe>
@@ -72,3 +82,6 @@ Perfect example of "AI does the generation, humans do the verification."
 
 
 _The presentation itself becomes proof of concept: professional output through natural language collaboration, refined by human judgment._
+
+---
+**tags** #vibe-coding #AI #case-study #presentation #human-AI-collaboration #meta #project #GraphXR #Kineviz

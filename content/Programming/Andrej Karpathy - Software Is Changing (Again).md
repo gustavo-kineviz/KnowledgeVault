@@ -1,6 +1,15 @@
+---
+title: Software Is Changing (Again) - Andrej Karpathy
+created: 2025-06-23
+category: Technology
+related:
+  - LLMs
+  - Software Development
+  - AI Programming
+  - Vibe Coding 101
+---
 
-
-[Link to the video](https://www.youtube.com/watch?v=LCEmiRjPEtQ)
+[Click here to watch the full video](https://www.youtube.com/watch?v=LCEmiRjPEtQ)
 # Part 1 – Summary
 
 - **Software 1.0** – Human programmers write explicit, line-by-line code. Everything is handcrafted.  
@@ -108,3 +117,6 @@ The **code** is the easy part!
 If documentation is structured for LLMs, huge new capabilities open up.  
 It’s not just about formatting in markdown — you must **adapt instructions** so an LLM can act on them.  
 For example: replace “click” with an actionable equivalent for an LLM agent.
+
+---
+**tags** #AI #LLM #software-development #programming #machine-learning #future-of-coding #andrej-karpathy

@@ -1,3 +1,12 @@
+---
+title: Vibe Coding 101
+created: 2025-08-13
+category: Technology
+related:
+  - AI Development
+  - Programming
+  - Andrej Karpathy - Software Is Changing (Again)
+---
 # What is Vibe Coding?
 **Imagine building an app without really “coding.”**
 
@@ -64,3 +73,4 @@ Check out the [[Andrej Karpathy - Software Is Changing (Again)#The Iron Man Anal
 **💡 Tip**: Use vibe coding for speed, but review everything before deploying or sharing
 
 ---
+**tags** #vibe-coding #AI #LLM #coding #programming #development

@@ -1,3 +1,12 @@
+---
+title: BAML - Programming Language for AI
+created: 2025-08-13
+category: Technology
+related:
+  - AI Development
+  - Programming Languages
+  - LLMs
+---
 # What is BAML?
 ![[CleanShot 2025-08-13 at 20.09.04.png]]
 
@@ -57,3 +66,4 @@ BAML is _not_ ideal for:
 
 ---
 
+**tags** #BAML #AI #programming-language #development #LLM #tools

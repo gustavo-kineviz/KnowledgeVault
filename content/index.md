@@ -15,11 +15,11 @@ At its core, this space is about making learning **accessible, collaborative, an
 
 # Who am I?
 
-Hi! I’m Gustavo — a 25yo Production Engineer from Brazil. 
+Hi! I’m Gustavo — a 26yo Production Engineer from Brazil. 
 
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="/assets/pfp_pixel.png" alt="Gustavo" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem;">
-  <h4 style="margin: 0.5rem 0; font-size: 1rem;">Gustavo</h4>
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 2rem auto; max-width: 200px;">
+  <img src="/assets/pfp_pixel.png" alt="Gustavo" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; display: block;">
+  <h4 style="margin: 0.5rem 0; font-size: 1rem; text-align: center;">Gustavo</h4>
 </div>
 
 I started this **Knowledge Vault** because I believe that ideas grow stronger when shared. Every time I explain something to someone else, I notice gaps in my own understanding — and that’s where the real learning happens.

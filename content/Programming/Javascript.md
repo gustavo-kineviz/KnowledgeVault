@@ -1,3 +1,12 @@
+---
+title: JavaScript - The Good Parts
+created: 2025-03-24
+category: Technology
+related:
+  - Programming Languages
+  - Web Development
+  - JSON
+---
 # History and Context
 
 JavaScript was created in 1995 by Brendan Eich at Netscape. Interestingly, **Java failed its primary mission** with [[Glossary#applet|applets]], and nobody expected JavaScript to be used for significant applications initially. JavaScript was **incomplete at first** and many developers approached it through **trial and error** rather than proper learning.
@@ -160,3 +169,5 @@ While Crockford's "Good Parts" was written for ES5, modern JavaScript (ES6+) has
 - **Classes** (though Crockford prefers functional patterns)
 
 The key is understanding both the historical context and modern improvements to write effective JavaScript code.
+
+**tags** #javascript #programming #web-development #coding #JSON #lambda #functional-programming
