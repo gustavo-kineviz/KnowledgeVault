@@ -6,13 +6,13 @@ const ProfileCard: QuartzComponent = ({ displayClass }: QuartzComponentProps) =>
     <div class={classNames(displayClass, "profile-card")}>
       <div class="profile-content">
         <img 
-          src="https://github.com/gustavo-kineviz/KnowledgeVault/blob/v4/content/assets/pfp_pixel.png?raw=true" 
+          src="https://github.com/gustavo-kineviz/KnowledgeVault/blob/v4/content/assets/pfp_matias.jpg?raw=true" 
           alt="Gustavo" 
           class="profile-image"
         />
-        <h4 class="profile-name">Gustavo</h4>
       </div>
-    </div>)
+    </div>
+  )
 }
 
 ProfileCard.css = `
@@ -37,13 +37,6 @@ ProfileCard.css = `
   margin-left: auto;
   margin-right: auto;
 }
-
-.profile-name {
-  margin: 0.5rem 0 0.25rem 0;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
 `
 
 export default (() => ProfileCard) satisfies QuartzComponentConstructor
