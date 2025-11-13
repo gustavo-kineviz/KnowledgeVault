@@ -7,9 +7,9 @@ I believe that learning is better when it’s shared, and that teaching is one o
 Here, you’ll find my notes, summaries, and insights on topics that fascinate me — from AI to programming, from productivity to creative thinking.
 
 This vault is my ongoing experiment in **open learning**:  
-- 🛠 I aim to explain concepts in **clear, beginner-friendly language**.  
-- 📂 I publish my notes as they are — imperfect, evolving, but useful.  
-- 🔄 I revisit and update entries as my understanding improves.  
+- Explain concepts in **clear, beginner-friendly language**.  
+- Publish my notes as they are — imperfect, evolving, but useful.  
+- Revisit and update entries as my understanding improves.  
 
 At its core, this space is about making learning **accessible, collaborative, and less intimidating**.
 
