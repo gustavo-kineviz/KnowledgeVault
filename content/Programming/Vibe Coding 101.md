@@ -17,6 +17,7 @@ No cryptic symbols, no walls of text — just **talking, clicking, and copy-past
 That's **vibe coding** — a term coined by [Andrej Karpathy](https://karpathy.ai/) to describe a new style of development with AI tools. You're not painstakingly typing every line; you're **describing what you want**, and the AI turns it into code.
 
 This was when the term got popular: 
+
 ![[Pasted image 20250813191817.png|400]]
 
 ---
