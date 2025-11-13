@@ -2,17 +2,25 @@
 draft: true
 ---
 # Pending
-- [ ] Help Sony with a video
-	- [ ] Talk with jacob about Graph Composer
 - [ ] Traduzir o primeiro tópico: [https://observablehq.com/collection/@dienert/d3](https://observablehq.com/collection/@dienert/d3)
 	- [ ] Criar uma conta no observable e criar um fork
-- [ ] We need to research [https://lovable.dev/?via=promo80&via=promo80&gad_source=1](https://lovable.dev/?via=promo80&via=promo80&gad_source=1), and build our own version of it, to generate on demand app inside GraphXR. [@Xing Li](https://kineviz.slack.com/team/U01FN5RNH40) [@Diénert](https://kineviz.slack.com/team/U04KJJQUDGT) [@Gustavo Lopes](https://kineviz.slack.com/team/U08CVTHC9AS) can you guys take a look at it? Possible to use Grove. This is not a 3.x feature. But we should target this as soon as we get 3.x to a good place.
-- [ ] See in Miro the sandboxes (Wei)
 - [ ] What's NER? How can we pipeline to a database and how to annotate #dienert
 	- [ ] Wei wants a POC he can talk to people about 
-- [ ] 
-![[CleanShot 2025-09-29 at 18.53.25.png]]
-uv run step4_monitor.py
+- [ ] Alinhar com Tianho sobre explicar para outras pessoas do GraphXR
+- [ ] dar ideias para sandboxes
+- [ ] update [[Social Media]]
+- [ ] Ask wei on how to get money and who are our customers
+	- [ ] Use graphxr to map our customers?
+	- [ ] How to look this up?
+	- [ ] outline for how to speak on behalf of kineviz
+	- [ ] How to post on multiple plataforms?
+	- [ ] Se direcionar pelo próprio google e como ele busca os clientes 
+- [ ] Fazer uma sandbox
+	- [ ] Decidir o tema
+- [ ] Revisar sandbox do Ben
+- [ ] API key pro Cursor
+- [ ] Criar o banco em partes 
+
 --- 
 # Done
 - [x] Fix and update obsidian
