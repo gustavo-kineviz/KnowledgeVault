@@ -2,7 +2,7 @@
 echo "🧹 Cleaning old content..."
 rm -rf content/*
 echo "📋 Copying your notes..."
-cp -r ~/Desktop/Kineviz_Obsidian/* content/
+cp -r ~/Desktop/knowledge_vault/* content/
 echo "🗑️ Removing unwanted files..."
 rm -rf content/.obsidian content/.git content/.trash content/drafts
 echo "🔄 Staging changes..."
