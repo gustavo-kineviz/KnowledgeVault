@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obsidian for Data Organization - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slides-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #87ceeb;
+        }
+
+        h3 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+
+        .learning-points {
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .learning-points li {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            list-style: none;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .learning-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .expectations {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #ffd700;
+        }
+
+        .expectations p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .vault-preview {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px 0;
+        }
+
+        .feature-box {
+            flex: 1;
+            padding: 25px;
+            margin: 0 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-box h4 {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-box p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            opacity: 1;
+            color: #f0f8ff;
+        }
+
+        .network-viz {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .node {
+            width: 20px;
+            height: 20px;
+            background: #4ade80;
+            border-radius: 50%;
+            margin: 10px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .node:nth-child(2):after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: #4ade80;
+            top: 9px;
+            left: 20px;
+        }
+
+        .node:nth-child(3):after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: #4ade80;
+            top: 9px;
+            left: 20px;
+        }
+
+        .node:nth-child(4):after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: #4ade80;
+            top: 9px;
+            left: 20px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .emphasis {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.6rem; }
+            .learning-points li { font-size: 1.1rem; }
+            .slide { padding: 30px 20px; }
+            .vault-preview { flex-direction: column; }
+            .feature-box { margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>Obsidian for Data Organization</h1>
+            <p class="subtitle">Building Connected Knowledge Systems</p>
+            <div class="network-viz">
+                <span class="node"></span>
+                <span class="node"></span>
+                <span class="node"></span>
+                <span class="node"></span>
+                <span class="node"></span>
+            </div>
+        </div>
+
+        <!-- Slide 2: What You'll Learn -->
+        <div class="slide">
+            <h2>What You'll Learn Today</h2>
+            <ul class="learning-points">
+                <li>Introduction & Learning Objectives</li>
+                <li>What is Obsidian & What it's good for</li>
+                <li>Markdown Basics</li>
+                <li>Links (Internal & External)</li>
+                <li>Tags</li>
+                <li>Frontmatter</li>
+                <li>Vibe Coding in Obsidian</li>
+                <li>Best Practices & Common Mistakes</li>
+                <li>Obsidian's Versatility & Call to Action</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: What's Expected -->
+        <div class="slide">
+            <h2>What's Expected From You</h2>
+            <div class="expectations">
+                <p><strong>Focus on understanding concepts</strong> rather than memorizing steps</p>
+                <p><strong>Think about your specific data workflows</strong> and how these ideas apply</p>
+                <p><strong>Ask questions</strong> if something isn't clear</p>
+            </div>
+            <h3 style="margin-top: 40px;">After this demo, you'll know exactly how to adapt Obsidian to your specific data needs</h3>
+        </div>
+
+        <!-- Slide 4: What is Obsidian -->
+        <div class="slide">
+            <h2>What is Obsidian?</h2>
+            <div class="vault-preview">
+                <div class="feature-box">
+                    <h4>Knowledge Workspace</h4>
+                    <p>Treats your notes as a network, not a hierarchy</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Local & Secure</h4>
+                    <p>Your data stays on your computer, not in the cloud</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Future-Proof</h4>
+                    <p>Plain text files that work everywhere</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Let's Build -->
+        <div class="slide">
+            <h1>Ready to see it in action?</h1>
+            <h3>Let's build a knowledge system together</h3>
+            <div class="network-viz" style="margin-top: 50px;">
+                <span class="node"></span>
+                <span class="node"></span>
+                <span class="node"></span>
+                <span class="node"></span>
+                <span class="node"></span>
+                <span class="node"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">5</span>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()" id="prevBtn">← Previous</button>
+        <button class="nav-btn" onclick="nextSlide()" id="nextBtn">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function showSlide(n) {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === n) {
+                    slide.classList.add('active');
+                } else if (index < n) {
+                    slide.classList.add('prev');
+                }
+            });
+            
+            document.getElementById('current-slide').textContent = n + 1;
+            updateButtons();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Initialize
+        updateButtons();
+        showSlide(0);
+    </script>
+</body>
+</html>

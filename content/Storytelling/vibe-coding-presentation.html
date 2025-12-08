@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Coding: Graph Development Made Human</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+            padding: 60px;
+            text-align: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+
+        /* Graph-inspired background elements */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(79, 172, 254, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(161, 255, 206, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            max-width: 900px;
+            width: 100%;
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            color: #a0c4ff;
+        }
+
+        .problem-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .solution-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(161, 255, 206, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #a1ffce;
+        }
+
+        .story-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(79, 172, 254, 0.3) 0%, rgba(0, 242, 254, 0.3) 100%);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #4facfe;
+        }
+
+        .pain-highlight {
+            background: linear-gradient(120deg, rgba(255, 107, 107, 0.3) 0%, rgba(255, 159, 159, 0.3) 100%);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #ff6b6b;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+            align-items: center;
+        }
+
+        .demo-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .demo-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.2);
+        }
+
+        .demo-before {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .demo-after {
+            border-left: 4px solid #a1ffce;
+        }
+
+        .code-example {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Fira Code', monospace;
+            text-align: left;
+            border-left: 4px solid #4facfe;
+            font-size: 0.9rem;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(79, 172, 254, 0.2);
+            border: 1px solid rgba(79, 172, 254, 0.5);
+            border-radius: 50px;
+            color: white;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(79, 172, 254, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(161, 255, 206, 0.2);
+            border: 1px solid rgba(161, 255, 206, 0.5);
+            border-radius: 50px;
+            color: white;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .language-toggle:hover {
+            background: rgba(161, 255, 206, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(161, 255, 206, 0.3);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+        }
+
+        .iron-man-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            gap: 3rem;
+        }
+
+        .iron-man-side {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(79, 172, 254, 0.3);
+        }
+
+        .iron-man-robot {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .iron-man-suit {
+            border-left: 4px solid #a1ffce;
+        }
+
+        .vs {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4facfe;
+        }
+
+        .big-quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+            border-radius: 15px;
+            border-left: 5px solid #4facfe;
+            text-align: center;
+        }
+
+        .karpathy-quote {
+            color: #4facfe;
+            font-weight: 600;
+        }
+
+        .reveal-container {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .reveal-text {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .reveal-highlight {
+            background: linear-gradient(45deg, #ff6b6b, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 2.2rem;
+        }
+
+        .graph-visual {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #4facfe, #0066cc);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .edge {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #4facfe, transparent);
+            animation: flow 2s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes flow {
+            0% { opacity: 0; transform: scaleX(0); }
+            50% { opacity: 1; transform: scaleX(1); }
+            100% { opacity: 0; transform: scaleX(0); }
+        }
+
+        .slide-10 {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4facfe 100%);
+        }
+
+        .slide-11 {
+            background: linear-gradient(135deg, #a1ffce 0%, #4facfe 100%);
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .story-text, .problem-text, .solution-text {
+                font-size: 1.1rem;
+            }
+            .demo-container, .iron-man-container {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+        }
+
+        .best-practices {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .practices-column {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .do {
+            border-left: 4px solid #a1ffce;
+        }
+
+        .dont {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        /* Visual API Pain Point */
+        .api-wrestling {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .wrestler {
+            font-size: 4rem;
+            margin: 0 2rem;
+            animation: wrestle 2s ease-in-out infinite;
+        }
+
+        .api-monster {
+            font-size: 6rem;
+            color: #ff6b6b;
+            animation: growl 2s ease-in-out infinite;
+        }
+
+        @keyframes wrestle {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        @keyframes growl {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .insights-treasure {
+            font-size: 3rem;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Visual Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.2);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .data-scientist {
+            border-left: 4px solid #4facfe;
+        }
+
+        .domain-expert {
+            border-left: 4px solid #a1ffce;
+        }
+
+        .developer {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .teams {
+            border-left: 4px solid #ffa500;
+        }
+
+        /* Exciting reveal slides */
+        .slide-10 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #8B0000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-11 {
+            background: linear-gradient(135deg, #006400 0%, #32CD32 50%, #FFD700 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mind-blown {
+            font-size: 8rem;
+            animation: explode 2s ease-in-out infinite;
+        }
+
+        @keyframes explode {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(-5deg); }
+            75% { transform: scale(1.05) rotate(5deg); }
+        }
+
+        .celebration {
+            font-size: 6rem;
+            animation: celebrate 1s ease-in-out infinite;
+        }
+
+        @keyframes celebrate {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .surprise-text {
+            font-size: 2rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 2rem 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Hidden elements for screen readers and translations */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Background Graph Elements -->
+        <div class="graph-visual">
+            <div class="node" style="top: 10%; left: 20%;"></div>
+            <div class="node" style="top: 20%; right: 15%;"></div>
+            <div class="node" style="bottom: 30%; left: 10%;"></div>
+            <div class="node" style="bottom: 20%; right: 20%;"></div>
+            <div class="edge" style="top: 15%; left: 25%; width: 200px; transform: rotate(45deg);"></div>
+            <div class="edge" style="bottom: 25%; right: 15%; width: 150px; transform: rotate(-30deg);"></div>
+        </div>
+
+        <!-- Slide 1: Clear Title -->
+        <div class="slide active">
+            <div class="slide-content">
+                <h1 data-en="Vibe Coding" data-pt="Vibe Coding">Vibe Coding</h1>
+                <p class="subtitle" data-en="Building Graph Applications Through Natural Language" data-pt="Criando Aplicações de Grafos Com Linguagem Natural">Building Graph Applications Through Natural Language</p>
+                <p class="story-text">
+                    <em data-en="What if creating complex graph visualizations was as easy as having a conversation?" data-pt="E se criar visualizações complexas de grafos fosse tão fácil quanto ter uma conversa?">What if creating complex graph visualizations was as easy as having a conversation?</em>
+                </p>
+                <div class="big-quote">
+                    <span data-en="&quot;The hottest new programming language is English.&quot;" data-pt="&quot;A linguagem de programação mais quente é o inglês.&quot;">"The hottest new programming language is English."</span>
+                    <br><small class="karpathy-quote">- Andrej Karpathy</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Our Pain Point (Visual) -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="The Problem We All Know" data-pt="O Problema Que Todo Mundo Conhece">The Problem We All Know</h2>
+                <div class="api-wrestling">
+                    <span class="wrestler">🤼</span>
+                    <span class="api-monster">💻⚙️</span>
+                </div>
+                <div class="problem-text">
+                    <strong data-en="Your pain point:" data-pt="Seu problema:">Your pain point:</strong> <span class="pain-highlight" data-en="You spend more time wrestling with APIs than exploring insights" data-pt="Você gasta mais tempo brigando com APIs do que explorando insights">You spend more time wrestling with APIs than exploring insights</span>.
+                </div>
+                <p class="story-text" data-en="Complex graph data preparation feels too technical and time-consuming." data-pt="Preparar dados complexos de grafos parece muito técnico e demorado.">
+                    Complex graph data preparation feels too technical and time-consuming.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Demo Step 1 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="Demo: The Traditional Way vs Vibe Coding" data-pt="Demo: O Jeito Tradicional vs Vibe Coding">Demo: The Traditional Way vs Vibe Coding</h2>
+                <div class="demo-container">
+                    <div class="demo-step demo-before">
+                        <h3 data-en="😤 The Old Way" data-pt="😤 O Jeito Antigo">😤 The Old Way</h3>
+                        <div class="code-example">
+// Traditional coding
+nodes.forEach(node => {
+  const label = node.properties.label;
+  if (label === "Zeus") {
+    node.properties.url = "https://...zeus.jpg";
+  } else if (label === "Athena") {
+    node.properties.url = "https://...athena.jpg";
+  }
+  // ... 20 more lines of repetitive code
+});
+                        </div>
+                        <p data-en="Learning API syntax, writing loops, handling edge cases..." data-pt="Aprender sintaxe de API, escrever loops, lidar com casos especiais...">Learning API syntax, writing loops, handling edge cases...</p>
+                    </div>
+                    <div class="demo-step demo-after">
+                        <h3 data-en="✨ The Vibe Way" data-pt="✨ O Jeito Vibe">✨ The Vibe Way</h3>
+                        <div class="code-example">
+<span data-en="&quot;I need to add URL properties to entity nodes 
+where the label matches specific names...&quot;
+
+// AI generates proper API code:
+// nodes.forEach(...)
+// with proper syntax and error handling" data-pt="&quot;Preciso adicionar propriedades URL aos nós 
+onde o label bate com nomes específicos...&quot;
+
+// IA gera código de API adequado:
+// nodes.forEach(...)
+// com sintaxe correta e tratamento de erros">"I need to add URL properties to entity nodes 
+where the label matches specific names..."
+
+// AI generates proper API code:
+// nodes.forEach(...)
+// with proper syntax and error handling</span>
+                        </div>
+                        <p data-en="Describe what you want, AI handles the implementation" data-pt="Descreva o que você quer, a IA cuida da implementação">Describe what you want, AI handles the implementation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: How This Solves the Macro Pain -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="How This Addresses Your Pain" data-pt="Como Isso Resolve Seu Problema">How This Addresses Your Pain</h2>
+                <p class="story-text">
+                    <strong data-en="Step by step, this approach eliminates friction:" data-pt="Passo a passo, essa abordagem elimina o atrito:">Step by step, this approach eliminates friction:</strong>
+                </p>
+                <div class="solution-text">
+                    <strong data-en="1. No API Learning Curve:" data-pt="1. Sem Curva de Aprendizado de API:">1. No API Learning Curve:</strong> <span data-en="You describe what you want instead of learning complex syntax" data-pt="Você descreve o que quer ao invés de aprender sintaxe complexa">You describe what you want instead of learning complex syntax</span><br><br>
+                    <strong data-en="2. Faster Iteration:" data-pt="2. Iteração Mais Rápida:">2. Faster Iteration:</strong> <span data-en="Modify data structures by updating your description, not rewriting code" data-pt="Modifique estruturas de dados atualizando sua descrição, não reescrevendo código">Modify data structures by updating your description, not rewriting code</span><br><br>
+                    <strong data-en="3. Focus on Insights:" data-pt="3. Foco nos Insights:">3. Focus on Insights:</strong> <span data-en="Spend time exploring data patterns, not debugging implementation" data-pt="Gaste tempo explorando padrões de dados, não debugando implementação">Spend time exploring data patterns, not debugging implementation</span><br><br>
+                    <strong data-en="4. Accessible to Non-Coders:" data-pt="4. Acessível para Não-Programadores:">4. Accessible to Non-Coders:</strong> <span data-en="Domain experts can directly translate their knowledge into working graph applications" data-pt="Especialistas de domínio podem traduzir diretamente seu conhecimento em aplicações de grafos funcionais">Domain experts can directly translate their knowledge into working graph applications</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: The Iron Man Principle -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="The Right Kind of AI Partnership" data-pt="O Tipo Certo de Parceria com IA">The Right Kind of AI Partnership</h2>
+                <div class="big-quote">
+                    <span data-en="&quot;We need more Iron Man suits, fewer Iron Man robots.&quot;" data-pt="&quot;Precisamos de mais armaduras do Homem de Ferro, menos robôs do Homem de Ferro.&quot;">"We need more Iron Man suits, fewer Iron Man robots."</span>
+                    <br><small class="karpathy-quote">- Andrej Karpathy</small>
+                </div>
+                <div class="iron-man-container">
+                    <div class="iron-man-side iron-man-robot">
+                        <h3 data-en="🤖 Iron Man Robot" data-pt="🤖 Robô do Homem de Ferro">🤖 Iron Man Robot</h3>
+                        <p><strong data-en="Autonomous AI:" data-pt="IA Autônoma:">Autonomous AI:</strong><br>
+                        <span data-en="• Full automation<br>• No human oversight<br>• High risk of errors<br>• Black box decisions" data-pt="• Automação total<br>• Sem supervisão humana<br>• Alto risco de erros<br>• Decisões caixa preta">• Full automation<br>• No human oversight<br>• High risk of errors<br>• Black box decisions</span></p>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="iron-man-side iron-man-suit">
+                        <h3 data-en="🦾 Iron Man Suit" data-pt="🦾 Armadura do Homem de Ferro">🦾 Iron Man Suit</h3>
+                        <p><strong data-en="Human-AI Partnership:" data-pt="Parceria Humano-IA:">Human-AI Partnership:</strong><br>
+                        <span data-en="• AI amplifies human capability<br>• Human maintains control<br>• Transparent process<br>• Best of both worlds" data-pt="• IA amplifica capacidade humana<br>• Humano mantém controle<br>• Processo transparente<br>• O melhor dos dois mundos">• AI amplifies human capability<br>• Human maintains control<br>• Transparent process<br>• Best of both worlds</span></p>
+                    </div>
+                </div>
+                <p class="story-text">
+                    <em data-en="AI does the generation, humans do the verification." data-pt="IA faz a geração, humanos fazem a verificação.">AI does the generation, humans do the verification.</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Vibe Coding in Context -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="Understanding Vibe Coding" data-pt="Entendendo Vibe Coding">Understanding Vibe Coding</h2>
+                <p class="story-text">
+                    <span data-en="Vibe coding isn't about replacing programming skills – it's about" data-pt="Vibe coding não é sobre substituir habilidades de programação – é sobre">Vibe coding isn't about replacing programming skills – it's about</span> <span class="highlight" data-en="changing the interface" data-pt="mudar a interface">changing the interface</span>.
+                </p>
+                <div class="demo-container">
+                    <div class="demo-step">
+                        <h3 data-en="Traditional Coding" data-pt="Programação Tradicional">Traditional Coding</h3>
+                        <p data-en="You speak the computer's language<br>Syntax, APIs, edge cases<br>High barrier to entry" data-pt="Você fala a linguagem do computador<br>Sintaxe, APIs, casos especiais<br>Alta barreira de entrada">You speak the computer's language<br>
+                        Syntax, APIs, edge cases<br>
+                        High barrier to entry</p>
+                    </div>
+                    <div class="demo-step">
+                        <h3 data-en="Vibe Coding" data-pt="Vibe Coding">Vibe Coding</h3>
+                        <p data-en="Computer speaks your language<br>Natural descriptions<br>Focus on the &quot;what,&quot; not &quot;how&quot;" data-pt="Computador fala sua linguagem<br>Descrições naturais<br>Foco no &quot;o quê&quot;, não &quot;como&quot;">Computer speaks your language<br>
+                        Natural descriptions<br>
+                        Focus on the "what," not "how"</p>
+                    </div>
+                </div>
+                <p class="story-text" data-en="You're still programming – you're defining problems, making decisions, and building systems. You're just using a more natural interface." data-pt="Você ainda está programando – definindo problemas, tomando decisões e construindo sistemas. Só está usando uma interface mais natural.">
+                    You're still programming – you're defining problems, making decisions, and building systems. You're just using a more natural interface.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Best Practices -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="Vibe Coding Best Practices" data-pt="Melhores Práticas do Vibe Coding">Vibe Coding Best Practices</h2>
+                <div class="best-practices">
+                    <div class="practices-column do">
+                        <h3 data-en="✅ Do This" data-pt="✅ Faça Isso">✅ Do This</h3>
+                        <p><strong data-en="• Use Git religiously" data-pt="• Use Git religiosamente">• Use Git religiously</strong><br>
+                        <span data-en="AI can make mistakes" data-pt="IA pode errar">AI can make mistakes</span><br><br>
+                        <strong data-en="• Review all generated code" data-pt="• Revise todo código gerado">• Review all generated code</strong><br>
+                        <span data-en="Understand what it's doing" data-pt="Entenda o que está fazendo">Understand what it's doing</span><br><br>
+                        <strong data-en="• Test everything" data-pt="• Teste tudo">• Test everything</strong><br>
+                        <span data-en="Especially before production" data-pt="Especialmente antes da produção">Especially before production</span><br><br>
+                        <strong data-en="• Choose the right AI tool" data-pt="• Escolha a ferramenta de IA certa">• Choose the right AI tool</strong><br>
+                        <span data-en="Different tasks, different tools" data-pt="Tarefas diferentes, ferramentas diferentes">Different tasks, different tools</span></p>
+                    </div>
+                    <div class="practices-column dont">
+                        <h3 data-en="⚠️ Avoid This" data-pt="⚠️ Evite Isso">⚠️ Avoid This</h3>
+                        <p><strong data-en="• Blind trust in AI" data-pt="• Confiança cega na IA">• Blind trust in AI</strong><br>
+                        <span data-en="Always verify outputs" data-pt="Sempre verifique os resultados">Always verify outputs</span><br><br>
+                        <strong data-en="• Becoming too dependent" data-pt="• Ficar muito dependente">• Becoming too dependent</strong><br>
+                        <span data-en="Keep learning fundamentals" data-pt="Continue aprendendo fundamentos">Keep learning fundamentals</span><br><br>
+                        <strong data-en="• Skipping code review" data-pt="• Pular revisão de código">• Skipping code review</strong><br>
+                        <span data-en="You need to understand your system" data-pt="Você precisa entender seu sistema">You need to understand your system</span><br><br>
+                        <strong data-en="• No version control" data-pt="• Sem controle de versão">• No version control</strong><br>
+                        <span data-en="Recipe for disaster" data-pt="Receita para desastre">Recipe for disaster</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Real Impact (Visual) -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="The Real Impact" data-pt="O Impacto Real">The Real Impact</h2>
+                <p class="story-text">
+                    <span data-en="This isn't just about writing less code. It's about" data-pt="Isso não é só sobre escrever menos código. É sobre">This isn't just about writing less code. It's about</span> <span class="highlight" data-en="democratizing graph development" data-pt="democratizar desenvolvimento de grafos">democratizing graph development</span>.
+                </p>
+                <div class="impact-grid">
+                    <div class="impact-card data-scientist">
+                        <span class="impact-icon">📊</span>
+                        <h3 data-en="For Data Scientists" data-pt="Para Cientistas de Dados">For Data Scientists</h3>
+                        <p data-en="Spend time on analysis, not data wrangling" data-pt="Gaste tempo em análise, não preparando dados">Spend time on analysis, not data wrangling</p>
+                    </div>
+                    <div class="impact-card domain-expert">
+                        <span class="impact-icon">🧠</span>
+                        <h3 data-en="For Domain Experts" data-pt="Para Especialistas de Domínio">For Domain Experts</h3>
+                        <p data-en="Directly translate knowledge into interactive visualizations" data-pt="Traduza conhecimento diretamente em visualizações interativas">Directly translate knowledge into interactive visualizations</p>
+                    </div>
+                    <div class="impact-card developer">
+                        <span class="impact-icon">⚡</span>
+                        <h3 data-en="For Developers" data-pt="Para Desenvolvedores">For Developers</h3>
+                        <p data-en="Focus on architecture and complex logic, let AI handle boilerplate" data-pt="Foque em arquitetura e lógica complexa, deixe a IA cuidar do boilerplate">Focus on architecture and complex logic, let AI handle boilerplate</p>
+                    </div>
+                    <div class="impact-card teams">
+                        <span class="impact-icon">🚀</span>
+                        <h3 data-en="For Teams" data-pt="Para Times">For Teams</h3>
+                        <p data-en="Faster prototyping, more iteration, better collaboration" data-pt="Prototipagem mais rápida, mais iteração, melhor colaboração">Faster prototyping, more iteration, better collaboration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: What This Approach Solves -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="What This Approach Solves" data-pt="O Que Essa Abordagem Resolve">What This Approach Solves</h2>
+                <p class="story-text" data-en="By using vibe coding, we can describe complex graph operations and let AI generate the proper API code." data-pt="Usando vibe coding, podemos descrever operações complexas de grafos e deixar a IA gerar o código de API adequado.">
+                    By using vibe coding, we can describe complex graph operations and let AI generate the proper API code.
+                </p>
+                <div class="solution-text">
+                    <strong data-en="We eliminate:" data-pt="Eliminamos:">We eliminate:</strong><br>
+                    <span data-en="• The need to memorize API syntax<br>• Time spent writing repetitive operations<br>• The barrier between graph concepts and technical implementation" data-pt="• A necessidade de memorizar sintaxe de API<br>• Tempo gasto escrevendo operações repetitivas<br>• A barreira entre conceitos de grafos e implementação técnica">• The need to memorize API syntax<br>
+                    • Time spent writing repetitive operations<br>
+                    • The barrier between graph concepts and technical implementation</span><br><br>
+                    
+                    <strong data-en="We enable:" data-pt="Habilitamos:">We enable:</strong><br>
+                    <span data-en="• Rapid prototyping with natural language<br>• Focus on graph insights over API mechanics<br>• Accessible graph development for domain experts" data-pt="• Prototipagem rápida com linguagem natural<br>• Foco em insights de grafos ao invés de mecânica de API<br>• Desenvolvimento de grafos acessível para especialistas de domínio">• Rapid prototyping with natural language<br>
+                    • Focus on graph insights over API mechanics<br>
+                    • Accessible graph development for domain experts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: The Big Reveal Setup (More Exciting) -->
+        <div class="slide slide-10">
+            <div class="slide-content">
+                <h2 data-en="But Wait... There's More! 🎬" data-pt="Mas Espera... Tem Mais! 🎬">But Wait... There's More! 🎬</h2>
+                <div class="mind-blown">🤯</div>
+                <p class="surprise-text" data-en="Throughout this presentation, I've been showing you how AI can transform graph development..." data-pt="Durante toda essa apresentação, eu mostrei como IA pode transformar desenvolvimento de grafos...">
+                    Throughout this presentation, I've been showing you how AI can transform graph development...
+                </p>
+                <p class="story-text" data-en="How natural language can replace complex coding." data-pt="Como linguagem natural pode substituir programação complexa.">
+                    How natural language can replace complex coding.
+                </p>
+                <p class="story-text" data-en="How the Iron Man suit principle creates better human-AI collaboration." data-pt="Como o princípio da armadura do Homem de Ferro cria melhor colaboração humano-IA.">
+                    How the Iron Man suit principle creates better human-AI collaboration.
+                </p>
+                <div class="big-quote" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 107, 107, 0.2) 100%); border-left: 5px solid #FFD700;">
+                    <span data-en="But I haven't told you the BEST part yet..." data-pt="Mas eu ainda não contei a MELHOR parte...">But I haven't told you the BEST part yet...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: The Big Reveal (Completely Rebuilt) -->
+        <div class="slide">
+            <div class="slide-content" style="background: linear-gradient(135deg, #006400 0%, #32CD32 50%, #FFD700 100%); padding: 3rem; border-radius: 20px; backdrop-filter: blur(10px);">
+                
+                <h2 style="color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin-bottom: 2rem;" data-en="PLOT TWIST!" data-pt="REVIRAVOLTA!">PLOT TWIST!</h2>
+                
+                <div style="font-size: 2.2rem; font-weight: 700; color: #ffffff; margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 15px; border-left: 5px solid #FFD700;" data-en="This entire presentation was created using vibe coding!" data-pt="Essa apresentação inteira foi criada usando vibe coding!">
+                    This entire presentation was created using vibe coding!
+                </div>
+                
+                <div style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 1.5rem; background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px;">
+                    <p data-en="I described what I wanted to Claude and shared my notes – the same ones I use for my Knowledge Vault." data-pt="Eu descrevi o que queria pro Claude e compartilhei minhas anotações – as mesmas que uso no meu Knowledge Vault." style="margin-bottom: 1rem;">I described what I wanted to Claude and shared my notes – the same ones I use for my Knowledge Vault.</p>
+                    
+                    <p style="margin-bottom: 1rem;"><strong data-en="It took 7 iterations" data-pt="Levou 7 iterações">It took 7 iterations</strong> <span data-en="and multiple revisions to get it right." data-pt="e várias revisões pra ficar certo.">and multiple revisions to get it right.</span></p>
+                </div>
+                
+                <div style="background: rgba(255,215,0,0.2); padding: 2rem; border-radius: 15px; border-left: 5px solid #32CD32; font-size: 1.6rem; font-weight: 600; text-align: center;">
+                    <span data-en="Perfect example of the Iron Man suit principle in action!" data-pt="Exemplo perfeito do princípio da armadura do Homem de Ferro em ação!">Perfect example of the Iron Man suit principle in action!</span> 🦾
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Call to Action -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 data-en="Your Turn to Experiment" data-pt="Sua Vez de Experimentar">Your Turn to Experiment</h2>
+                <p class="story-text" data-en="The future of graph development isn't about replacing expertise with automation." data-pt="O futuro do desenvolvimento de grafos não é sobre substituir expertise com automação.">
+                    The future of graph development isn't about replacing expertise with automation.
+                </p>
+                <p class="story-text">
+                    <span data-en="It's about" data-pt="É sobre">It's about</span> <span class="highlight" data-en="amplifying your domain knowledge" data-pt="amplificar seu conhecimento de domínio">amplifying your domain knowledge</span> <span data-en="with AI assistance." data-pt="com assistência de IA.">with AI assistance.</span>
+                </p>
+                <div class="solution-text">
+                    <strong data-en="Start experimenting:" data-pt="Comece a experimentar:">Start experimenting:</strong><br>
+                    <span data-en="• Try vibe coding your next graph task<br>• Use AI for boilerplate, review the results<br>• Focus on graph insights, not API syntax" data-pt="• Experimente vibe coding na sua próxima tarefa de grafos<br>• Use IA para boilerplate, revise os resultados<br>• Foque em insights de grafos, não sintaxe de API">• Try vibe coding your next graph task<br>
+                    • Use AI for boilerplate, review the results<br>
+                    • Focus on graph insights, not API syntax</span>
+                </div>
+                <div class="big-quote" data-en="The best developers solve problems, not write code." data-pt="Os melhores desenvolvedores resolvem problemas, não escrevem código.">
+                    The best developers solve problems, not write code.
+                </div>
+                <p class="subtitle">
+                    💬 <span data-en="Join our discussions:" data-pt="Participe das discussões:">Join our discussions:</span> <a href="https://discord.gg/w96TPbgZKe" style="color: #4facfe;">discord.gg/w96TPbgZKe</a><br>
+                    📚 <span data-en="More notes:" data-pt="Mais anotações:">More notes:</span> gustavo-kineviz.github.io/KnowledgeVault/
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-indicator">🇧🇷 PT</span>
+    </button>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">
+            <span data-en="← Previous" data-pt="← Anterior">← Previous</span>
+        </button>
+        <button class="nav-btn" onclick="nextSlide()">
+            <span data-en="Next →" data-pt="Próximo →">Next →</span>
+        </button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">12</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        let currentLanguage = 'en';
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index < n) {
+                    slide.classList.add('prev');
+                } else if (index === n) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            document.getElementById('current-slide').textContent = n + 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        function toggleLanguage() {
+            const elements = document.querySelectorAll('[data-en][data-pt]');
+            const langIndicator = document.getElementById('lang-indicator');
+            
+            if (currentLanguage === 'en') {
+                currentLanguage = 'pt';
+                langIndicator.textContent = '🇺🇸 EN';
+                elements.forEach(el => {
+                    el.textContent = el.getAttribute('data-pt');
+                });
+            } else {
+                currentLanguage = 'en';
+                langIndicator.textContent = '🇧🇷 PT';
+                elements.forEach(el => {
+                    el.textContent = el.getAttribute('data-en');
+                });
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            } else if (e.key === 'l' || e.key === 'L') {
+                e.preventDefault();
+                toggleLanguage();
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
